@@ -3,7 +3,76 @@
 教程地址
 https://www.fangzhipeng.com/spring-cloud.html
 
-### eureka
+### Eureka
+
+Eureka注重服务可用性AP
+
+Zookeeper注重一致性CP
+
+默认注册中心地址：
+
+```java
+    this.serviceUrl.put("defaultZone", "http://localhost:8761/eureka/");
+```
+
+集群搭建
+
+Node-01
+```yaml
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-node01:8761/eureka,http://eureka-node02:8762/eureka,http://eureka-node03:8763/eureka
+spring:
+  application:
+    name: EurekaServer
+```
+
+Node-02
+```yaml
+server:
+  port: 8762
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-node01:8761/eureka,http://eureka-node02:8762/eureka,http://eureka-node03:8763/eureka
+spring:
+  application:
+    name: EurekaServer
+```
+
+Node-03
+```yaml
+server:
+  port: 8763
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-node01:8761/eureka,http://eureka-node02:8762/eureka,http://eureka-node03:8763/eureka
+spring:
+  application:
+    name: EurekaServer
+```
+
+自保模式
+
+> 如果在15分钟内超过85%的客户端节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障，Eureka Server自动进入自我保护机制
+
+> eureka.server.enable-self-preservation=true/false
+
+https://github.com/Netflix/eureka/wiki/Server-Self-Preservation-Mode
+
+REST接口
+
+https://github.com/Netflix/eureka/wiki/Eureka-REST-operations
 
 ### zuul
 

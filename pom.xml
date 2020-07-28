@@ -17,6 +17,11 @@
         <module>Config/ConfigServer</module>
         <module>Config/ConfigClient</module>
         <module>Monitor/ZipkinServer</module>
+        <module>CircuitBreaker/Hystrix</module>
+        <module>Registry/EurekaCluster01</module>
+        <module>Registry/EurekaCluster02</module>
+        <module>Registry/EurekaCluster03</module>
+        <module>Registry/EurekaServer</module>
     </modules>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
