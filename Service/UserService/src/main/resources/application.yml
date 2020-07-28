@@ -1,0 +1,23 @@
+server:
+  port: 0
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}-${random.value}
+spring:
+  application:
+    name: UserService
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mysql_tester?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: adminn
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.example.service.entity
+  configuration:
+    map-underscore-to-camel-case: false
